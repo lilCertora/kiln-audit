@@ -1,0 +1,23 @@
+// SPDX-License-Identifier: BUSL-1.1
+// SPDX-FileCopyrightText: 2023 Kiln <contact@kiln.fi>
+//
+// ██╗  ██╗██╗██╗     ███╗   ██╗
+// ██║ ██╔╝██║██║     ████╗  ██║
+// █████╔╝ ██║██║     ██╔██╗ ██║
+// ██╔═██╗ ██║██║     ██║╚██╗██║
+// ██║  ██╗██║███████╗██║ ╚████║
+// ╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═══╝
+//
+pragma solidity 0.8.17;
+
+import "./ctypes.sol";
+
+/// @title Deposit Mapping Custom Type
+library LDepositMapping {
+    function get(ctypes.DepositMapping position) internal pure returns (mapping(uint256 => ctypes.Deposit) storage data) {
+        // slither-disable-next-line assembly
+        assembly {
+            data.slot := position
+        }
+    }
+}
